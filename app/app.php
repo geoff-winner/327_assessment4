@@ -5,7 +5,7 @@
 
 
     // --->>> UNCOMMENT IF YOUR PROJECT WILL SAVE DATA INTO COOKIES <<< --- //
-    //
+    // 
     // session_start();
     //
     // if(empty($_SESSION['my_session'])) {
@@ -17,7 +17,7 @@
 
     // ------>>> UNCOMMENT IF YOUR PROJECT WILL INTERFACE W/ A DB <<<------ //
     //
-    // $DB = new PDO('pgsql:host=localhost; dbname=$DB_NAME);
+    // $DB = new PDO('pgsql:host=localhost; dbname=$DB_NAME');
     //
     // --------------------------->>> END <<< ----------------------------- //
 
