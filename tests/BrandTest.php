@@ -88,12 +88,15 @@
             $id = 1;
             $test_brand = new Brand($brand_name, $size, $id);
             $test_brand->save();
+
             $brand_name2 = 'Nike';
             $size2 = 5;
             $id2 = 2;
             $test_brand2 = new Brand($brand_name2, $size2, $id2);
             $test_brand2->save();
+
             $result = Brand::find($test_brand->getId());
+
             $this->assertEquals($test_brand, $result);
         }
         function test_update()
@@ -103,10 +106,11 @@
             $id = 1;
             $test_brand = new Brand($brand_name, $size, $id);
             $test_brand->save();
+
             $new_brand_name = 'Nikes';
-            $new_size = 6;
-            $test_brand->update($new_brand_name, $new_size);
-            $this->assertEquals(['Nikes', 6], [$test_brand->getBrandName(), $test_brand->getSize()]);
+
+            $test_brand->update($new_brand_name);
+            $this->assertEquals(['Nikes'], [$test_brand->getBrandName()]);
         }
     }
 ?>
