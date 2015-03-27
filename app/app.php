@@ -63,6 +63,17 @@
       return $app['twig']->render('brand.twig', array('brand' => $brand, 'brands' => Brand::getAll(), 'stores' => $brand->getStores(), 'all_stores' => Store::getAll()));
     });
 
+    //creates path to delete_cat page, calls on delete function, clears save
+    $app->post("/delete_stores", function() use ($app){
+        Store::deleteAll();
+        return $app['twig']->render('delete_stores.twig', array('stores' => Store::getAll()));
+    });
+    //creats path to delete_task, calls on delete function, clears save
+    $app->post("/delete_brands", function() use ($app) {
+        Brand::deleteAll();
+        return $app['twig']->render('delete_brands.twig', array('brands' => Brand::getAll()));
+    });
+
     return $app;
 
 ?>

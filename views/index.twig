@@ -20,7 +20,7 @@
 
         <a href='/stores'><button type='submit' class='btn btn-danger'>Stores</button></a>
 
-        <h5> Add a Brand to your Store </h5>
+        <h5> Add a Brand </h5>
         {% if brands is not empty %}
                 {% for brand in brands %}
                     <p><a href="/brands/{{ brand.getId }}">{{ brand.getBrandName }}</a></p>
