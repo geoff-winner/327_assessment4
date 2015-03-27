@@ -13,6 +13,10 @@
         'twig.path'=>__DIR__.'/../views'
     ));
 
+    use Symfony\Component\HttpFoundation\Request;
+    Request::enableHttpMethodParameterOverride();
+
+
     $app->get('/', function() use ($app) {
         return $app['twig']->render('index.twig', array('stores' => Store::getAll(), 'brands' => Brand::getAll()));
     });
@@ -72,6 +76,42 @@
     $app->post("/delete_brands", function() use ($app) {
         Brand::deleteAll();
         return $app['twig']->render('delete_brands.twig', array('brands' => Brand::getAll()));
+    });
+
+    $app->get('/store/{id}/edit', function($id) use ($app) {
+      $store = Store::find($id);
+      return $app['twig']->render('store_edit.twig', array('store' => $store));
+    });
+
+    $app->patch('/store/{id}', function($id) use ($app) {
+      $name = $_POST['name'];
+      $store = Store::find($id);
+      $store->update($name);
+      return $app['twig']->render('store_edit.twig', array('store' => $store, 'brand_name' => $store->getBrands()));
+    });
+
+    $app->delete('/store/{id}', function($id) use ($app) {
+      $store = Store::find($id);
+      $store->delete();
+      return $app['twig']->render('stores.twig', array('stores' => Store::getAll()));
+    });
+
+    $app->get('/brand/{id}/edit', function($id) use ($app) {
+      $brand = Brand::find($id);
+      return $app['twig']->render('brand_edit.twig', array('brand' => $brand));
+    });
+
+    $app->patch('/brand/{id}', function($id) use ($app) {
+      $brand_name = $_POST['brand_name'];
+      $brand = Brand::find($id);
+      $brand->update($brand_name);
+      return $app['twig']->render('brand_edit.twig', array('brand' => $brand, 'brand_name' => $brand->getStores()));
+    });
+
+    $app->delete('/brand/{id}', function($id) use ($app) {
+      $brand = Brand::find($id);
+      $brand->delete();
+      return $app['twig']->render('brands.twig', array('brands' => Brand::getAll()));
     });
 
     return $app;

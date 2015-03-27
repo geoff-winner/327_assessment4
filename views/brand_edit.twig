@@ -1,0 +1,30 @@
+<html>
+    <head>
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+        <title>Edit Brand</title>
+    </head>
+    <body>
+        <center>
+            <h1>Update the Brand {{ brand.getBrandName }} </h1>
+
+            <form action="/brand/{{ brand.getId }}" method='post'>
+                <input name='_method' type='hidden' value='patch'>
+
+                <label for='brand_name'>Rename your Stylist:</label>
+                <input id='brand_name' name='brand_name' type='text'>
+
+                <button type='submit' class='btn btn-success btn-sm'>Update</button>
+            </form>
+            <br>
+              <a href='/'>
+              <button type='submit' class='btn btn-default btn-sm'>Go Back to the Homepage</button>
+              </a>
+              <br>
+              <br>
+            <form action='/brand/{{ brand.getId }}' method="post">
+                <input type="hidden" name="_method" value="delete">
+                <button type='submit' class='btn btn-danger btn-sm'>Delete this Brand</button>
+            </form>
+        </center>
+    </body>
+</html>

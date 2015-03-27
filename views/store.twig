@@ -28,9 +28,11 @@
             <button type='submit' class='btn btn-warning btn-xs'>Add Brand</button>
         </form>
 
-        <p><button type="submit" class='btn btn-info'><a href='/stores/{{ store.getId }}/edit'>Edit this Store</a></button></p>
+        <form action='/store/{{ store.getId }}/edit' method='get'>
+              <button type='submit' class='btn btn-warning'>Edit this Store</button>
+            </form>
 
-        <p><button type='submit' class='btn btn-info'><a href='/'>Home</a></button></p>
+        <p><button type='submit' class='btn btn-warning'><a href='/'>Home</a></button></p>
 
     </center></body>
 </html>

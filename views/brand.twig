@@ -25,12 +25,14 @@
                 <option value='{{ store.getId }}'> {{ store.getName }} </option>
                 {% endfor %}
             </select>
-            <button type='submit'>Add Store</button>
+            <button type='submit' class='btn btn-warning'>Add Store</button>
         </form>
 
-        <p><button type='submit' class='btn btn-info'><a href='/brands/{{ brand.getId }}/edit'> Edit this Brand</a></button></p>
+        <form action='/brand/{{ brand.getId }}/edit' method='get'>
+              <button type='submit' class='btn btn-warning'>Edit this Brand</button>
+            </form>
 
-        <p><button type='submit' class='btn btn-info'><a href='/'>Home</a></button></p>
+        <p><button type='submit' class='btn btn-warning'><a href='/'>Home</a></button></p>
 
     </center></body>
 </html>

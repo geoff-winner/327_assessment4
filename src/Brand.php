@@ -1,6 +1,6 @@
 <?php
 
-      $DB = new PDO('pgsql:host=localhost;dbname=shoes_test');
+      $DB = new PDO('pgsql:host=localhost;dbname=shoes');
 
       class Brand
       {
@@ -32,16 +32,6 @@
         {
           $this->id = (int) $new_id;
         }
-
-        // function getSize()
-        // {
-        //   return $this->size;
-        // }
-        //
-        // function setSize($new_size)
-        // {
-        //   $this->size = (int) $new_size;
-        // }
 
         function save()
         {
@@ -77,12 +67,10 @@
           return $found_brand;
         }
 
-        function update($new_brand_name, $new_size)
+        function update($new_brand_name)
         {
           $GLOBALS['DB']->exec("UPDATE brands SET brand_name = '{new_brand_name}' WHERE id = {$this->getId()};");
-          $GLOBALS['DB']->exec("UPDATE brands SET size = {new_size} WHERE id = {$this->getId()};");
           $this->setBrandName($new_brand_name);
-          $this->setSize($new_size);
         }
 
         function delete()
