@@ -95,9 +95,8 @@
              $brands = array();
              foreach($returned_brands as $returned_brand) {
              $brand_name = $returned_brand['brand_name'];
-             $size = $returned_brand['size'];
              $id = $returned_brand['id'];
-             $new_brand = new Brand($brand_name, $size, $id);
+             $new_brand = new Brand($brand_name, $id);
              array_push($brands, $new_brand);
            }
            return $brands;

@@ -1,0 +1,31 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+        <title>To Do list</title>
+    </head>
+    <body><center>
+      <div class='page-header'>
+           <h1>Stores<small>Brands</small></h1>
+       </div>
+            {% if stores is not empty %}
+                <ul>
+                    {% for store in stores %}
+                        <p><a href='/stores/{{ store.getId }}'>{{ store.getName }}</a></p>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+
+            <form action="/stores" method="post">
+                <label for="name"></label>
+                <input id="name" name="name" type="text">
+
+                <button type="submit" class="btn btn-success btn-xs">Add Store</button>
+            </form>
+
+            <form action='/delete_stores' method='post'>
+                <button type='submit' class='btn btn-default btn-sm'>Delete stores</button>
+            </form>
+            <p><button type='submit' class='btn btn-default btn-sm'><a href='/'>Home</a></button></p>
+
+    </center></body>
+</html>

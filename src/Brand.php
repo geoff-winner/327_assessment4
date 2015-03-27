@@ -5,13 +5,11 @@
       class Brand
       {
         private $brand_name;
-        private $size;
         private $id;
 
-        function __construct($brand_name, $size, $id = null)
+        function __construct($brand_name, $id = null)
         {
           $this->brand_name = $brand_name;
-          $this->size = $size;
           $this->id = $id;
         }
 
@@ -35,19 +33,19 @@
           $this->id = (int) $new_id;
         }
 
-        function getSize()
-        {
-          return $this->size;
-        }
-
-        function setSize($new_size)
-        {
-          $this->size = (int) $new_size;
-        }
+        // function getSize()
+        // {
+        //   return $this->size;
+        // }
+        //
+        // function setSize($new_size)
+        // {
+        //   $this->size = (int) $new_size;
+        // }
 
         function save()
         {
-          $statement = $GLOBALS['DB']->query("INSERT INTO brands (brand_name, size) VALUES ('{$this->getBrandName()}', {$this->getSize()}) RETURNING id;");
+          $statement = $GLOBALS['DB']->query("INSERT INTO brands (brand_name) VALUES ('{$this->getBrandName()}') RETURNING id;");
           $result = $statement->fetch(PDO::FETCH_ASSOC);
           $this->setId($result['id']);
         }
@@ -59,9 +57,8 @@
           $brands = array();
           foreach($returned_brands as $brand) {
             $brand_name = $brand['brand_name'];
-            $size = $brand['size'];
             $id = $brand['id'];
-            $new_brand = new Brand($brand_name, $size, $id);
+            $new_brand = new Brand($brand_name, $id);
             array_push($brands, $new_brand);
           }
           return $brands;

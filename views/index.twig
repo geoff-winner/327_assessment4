@@ -5,9 +5,11 @@
     </head>
     <body>
         <center>
-        <h1>Shoe Stores and Brands</h1>
+          <div class='page-header'>
+               <h1>Stores<small>Brands</small></h1>
+           </div>
 
-
+        <h5>Add a Store</h5>
         {% if stores is not empty %}
                 {% for store in stores %}
                     <p><a href="/stores/{{ store.getId }}">{{ store.getName }}</a></p>
@@ -16,10 +18,16 @@
         {% endif %}
 
 
-        <a href='/stores'><button type='submit' class='btn btn-danger btn-sm'>Stores</button></a>
+        <a href='/stores'><button type='submit' class='btn btn-danger'>Stores</button></a>
 
-        <h5> Add a Brand to your store </h5>
-            <a href='/brands'><button type='submit' class='btn btn-warning btn-sm'>Brands</button></a>
+        <h5> Add a Brand to your Store </h5>
+        {% if brands is not empty %}
+                {% for brand in brands %}
+                    <p><a href="/brands/{{ brand.getId }}">{{ brand.getBrandName }}</a></p>
+                {% endfor %}
+            {% else %}
+        {% endif %}
+            <a href='/brands'><button type='submit' class='btn btn-warning'>Brands</button></a>
 
         </center>
     </body>

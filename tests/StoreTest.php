@@ -113,9 +113,8 @@
            $test_store->save();
 
            $brand_name = 'Docks';
-           $size = 12;
            $id = 2;
-           $test_brand = new Brand($brand_name, $size, $id);
+           $test_brand = new Brand($brand_name, $id);
            $test_brand->save();
 
            $test_store->addBrand($test_brand);
@@ -131,15 +130,13 @@
            $test_store->save();
 
            $brand_name = 'John';
-           $size = 12;
            $id = 2;
-           $test_brand = new Brand($brand_name, $size, $id);
+           $test_brand = new Brand($brand_name, $id);
            $test_brand->save();
 
            $brand_name2 = 'Tim';
-           $size2 = 11;
            $id2 = 3;
-           $test_brand2 = new Brand($brand_name2, $size2, $id2);
+           $test_brand2 = new Brand($brand_name2, $id2);
            $test_brand2->save();
 
            $test_store->addBrand($test_brand);
