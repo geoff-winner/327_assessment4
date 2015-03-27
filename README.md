@@ -9,13 +9,13 @@ Use Composer to install [PHPUnit](https://phpunit.de/), [Silex](http://silex.sen
 
 ###APP
 
-This program is a tool to list out local shoe stores and the brands of shoes they carry.
+This program is a tool to list out local shoe stores and the brands of shoes they carry. It allows the user to add store and brand names. They can then add specific brands to stores or specific stores to brands. They can also edit the names of both the stores and brands. Deleting specific items as well as entire lists can be done.
 
 ###Preparing the database
 1. Run psql in the terminal.
-2. Type in "CREATE DATABASE 'yourdbname';" in the terminal.
+2. Type in "CREATE DATABASE 'shoes';" in the terminal.
 3. Type in "\c 'yourdbname'" in the terminal.
-4. Type in "CREATE TABLE brands (id serial PRIMARY KEY, brand_name varchar, size int);" in the terminal.
+4. Type in "CREATE TABLE brands (id serial PRIMARY KEY, brand_name varchar);" in the terminal.
 5. Type in "CREATE TABLE stores (id serial PRIMARY KEY, name varchar);" in your terminal.
 6. Type in "CREATE TABLE stores_brands (id serial PRIMARY KEY, store_id int, brand_id int);" in your terminal.
 6. Make sure you are accessing psql while in your project folder.
