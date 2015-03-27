@@ -17,6 +17,7 @@
             Store::deleteAll();
             // Brand::deleteAll();
         }
+
         function test_getName()
         {
             //Arrange
@@ -28,6 +29,7 @@
             //Assert
             $this->assertEquals($name, $result);
         }
+
         function test_setName()
         {
             $name = 'John';
@@ -37,6 +39,7 @@
             $result = $test_store->getName();
             $this->assertEquals('Anthony', $result);
         }
+
         function test_getId()
         {
             $name = 'John';
@@ -45,6 +48,7 @@
             $result = $test_store->getId();
             $this->assertEquals(1, $result);
         }
+
         function test_setId()
         {
             $name = 'John';
@@ -54,6 +58,7 @@
             $result = $test_store->getId();
             $this->assertEquals(3, $result);
         }
+
         function test_save()
         {
             $name = 'John';
@@ -63,6 +68,7 @@
             $result = Store::getAll();
             $this->assertEquals([$test_store], $result);
         }
+
         function test_find()
         {
             $name = 'John';
@@ -76,6 +82,7 @@
             $result = Store::find($test_store->getId());
             $this->assertEquals($test_store, $result);
         }
+
         function test_update()
         {
             $name = 'John';
@@ -86,6 +93,7 @@
             $test_store->update($new_name);
             $this->assertEquals(['Maggie'], [$test_store->getName()]);
         }
+        
         function test_delete()
         {
             $name = 'John';

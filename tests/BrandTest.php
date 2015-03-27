@@ -5,12 +5,15 @@
     * $backupStaticAttribute disabled
     */
     require_once "src/Brand.php";
+    require_once "src/Store.php";
+
     class BrandTest extends PHPUnit_Framework_TestCase
     {
         protected function tearDown()
         {
             Brand::deleteAll();
         }
+
         function test_getBrandName()
         {
             //Arrange
@@ -23,6 +26,7 @@
             //Assert
             $this->assertEquals($brand_name, $result);
         }
+
         function test_setBrandName()
         {
             $brand_name = 'Docks';
@@ -33,6 +37,7 @@
             $result = $test_brand->getBrandName();
             $this->assertEquals('Nike', $result);
         }
+
         function test_getSize()
         {
             $brand_name = 'Docks';
@@ -42,6 +47,7 @@
             $result = $test_brand->getSize();
             $this->assertEquals($size, $result);
         }
+
         function test_setSize()
         {
             $brand_name = 'Docks';
@@ -52,6 +58,7 @@
             $result = $test_brand->getSize();
             $this->assertEquals(6, $result);
         }
+
         function test_getId()
         {
             $brand_name = 'Docks';
@@ -61,6 +68,7 @@
             $result = $test_brand->getId();
             $this->assertEquals(1, $result);
         }
+
         function test_setId()
         {
             $brand_name = 'Docks';
@@ -71,6 +79,7 @@
             $result = $test_brand->getId();
             $this->assertEquals(3, $result);
         }
+
         function test_save()
         {
             $brand_name = 'Docks';
@@ -81,6 +90,7 @@
             $result = Brand::getAll();
             $this->assertEquals($test_brand, $result[0]);
         }
+
         function test_find()
         {
             $brand_name = 'Docks';
@@ -99,6 +109,7 @@
 
             $this->assertEquals($test_brand, $result);
         }
+
         function test_update()
         {
             $brand_name = 'Docks';
@@ -113,23 +124,29 @@
             $test_brand->update($new_brand_name, $new_size);
             $this->assertEquals(['Nikes', 6], [$test_brand->getBrandName(), $test_brand->getSize()]);
         }
-        //
-        // function test_delete()
-        // {
-        //     $course = 'Intro';
-        //     $coursenumber = 102;
-        //     $id = null;
-        //     $test_course = new Course($course, $coursenumber, $id);
-        //     $test_course->save();
-        //     $name = 'Otto';
-        //     $date = '2015-09-13';
-        //     $id2 = null;
-        //     $test_student = new Student($name, $date, $id2);
-        //     $test_student->save();
-        //     $test_course->addStudent($test_student);
-        //     $test_course->delete();
-        //     $this->assertEquals([], $test_student->getCourses());
-        // }
+
+        function test_addStore()
+        {
+            $name = 'Docks';
+            $id = 1;
+            $test_store = new Store($name, $id);
+            $test_store->save();
+
+            $name2 = 'Nike';
+            $id2 = 2;
+            $test_store2 = new Store($name2, $id2);
+            $test_store2->save();
+
+            $brand_name = 'John';
+            $size = 12;
+            $id3 = 3;
+            $test_brand = new Brand($brand_name, $size, $id);
+            $test_brand->save();
+
+            $test_brand->addStore($test_store);
+            $test_brand->addStore($test_store2);
+            $this->assertEquals($test_brand->getStores(), [$test_store, $test_store2]);
+        }
 
     }
 ?>

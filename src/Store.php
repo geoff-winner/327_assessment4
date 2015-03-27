@@ -10,28 +10,34 @@
            $this->name = $name;
            $this->id = $id;
        }
+
        function getName()
        {
            return $this->name;
        }
+
        function setName($new_name)
        {
            $this->name = (string) $new_name;
        }
+
        function getId()
        {
            return $this->id;
        }
+
        function setId($new_id)
        {
            $this->id = (int) $new_id;
        }
+
        function save()
        {
            $statement = $GLOBALS['DB']->query("INSERT INTO stores (name) VALUES ('{$this->getName()}') RETURNING id;");
            $result = $statement->fetch(PDO::FETCH_ASSOC);
            $this->setId($result['id']);
        }
+
        static function getAll()
        {
            $returned_stores = $GLOBALS['DB']->query("SELECT * FROM stores;");
@@ -44,10 +50,12 @@
            }
            return $stores;
        }
+
        static function deleteAll()
        {
            $GLOBALS['DB']->exec("DELETE FROM stores *;");
        }
+
        static function find($search_id)
        {
            $found_store = null;
@@ -60,11 +68,13 @@
            }
            return $found_store;
        }
+
        function update($new_name)
        {
            $GLOBALS['DB']->exec("UPDATE stores SET name = '{$new_name}' WHERE id = {$this->getId()};");
            $this->setName($new_name);
        }
+       
        function delete()
        {
            $GLOBALS['DB']->exec("DELETE FROM stores WHERE id = {$this->getId()};");
