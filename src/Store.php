@@ -1,5 +1,7 @@
 <?php
 
+    $DB = new PDO('pgsql:host=localhost;dbname=shoes');
+
     class Store
    {
        private $name;

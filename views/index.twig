@@ -1,0 +1,26 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+        <title>Shoes Plus</title>
+    </head>
+    <body>
+        <center>
+        <h1>Shoe Stores and Brands</h1>
+
+
+        {% if stores is not empty %}
+                {% for store in stores %}
+                    <p><a href="/stores/{{ store.getId }}">{{ store.getName }}</a></p>
+                {% endfor %}
+            {% else %}
+        {% endif %}
+
+
+        <a href='/stores'><button type='submit' class='btn btn-danger btn-sm'>Stores</button></a>
+
+        <h5> Add a Brand to your store </h5>
+            <a href='/brands'><button type='submit' class='btn btn-warning btn-sm'>Brands</button></a>
+
+        </center>
+    </body>
+</html>
