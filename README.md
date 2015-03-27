@@ -1,21 +1,28 @@
 ###Developers
-Bryan Borgeson
+Geoff Winner
 
 ###Date
-Update: March 24, 2015<br />
-Original: March 11, 2015
+March 27, 2015<br />
 
 ###Description
-This is a boilerplate for writing apps in PHP. It uses Composer to install [PHPUnit](https://phpunit.de/), [Silex](http://silex.sensiolabs.org/), and [Twig](http://twig.sensiolabs.org/).  It also links to a [Bootstrap CDN](http://www.bootstrapcdn.com/) for CSS Styling, as well as a [jQuery](https://code.jquery.com/) link for added functionality with JS.
+Use Composer to install [PHPUnit](https://phpunit.de/), [Silex](http://silex.sensiolabs.org/), and [Twig](http://twig.sensiolabs.org/).
 
-###Use and Editing
-To use this boilerplate, simply: <br />
-1. Download and Extract the compressed file into the directory you'd like your project to live in. <br />
-2. Load the project folder into your text editor. <br />
-3. Start PHP in the web folder of the project directory. <br />
-4. CODE! *Take care to change the names of the files in src, tests, and views, as well as the root folder to match your project* <br />
+###APP
 
-###Copyright (c) 2015 Bryan Borgeson
+This program is a tool to list out local shoe stores and the brands of shoes they carry.
+
+###Preparing the database
+1. Run psql in the terminal.
+2. Type in "CREATE DATABASE 'yourdbname';" in the terminal.
+3. Type in "\c 'yourdbname'" in the terminal.
+4. Type in "CREATE TABLE brands (id serial PRIMARY KEY, brand_name varchar, size int);" in the terminal.
+5. Type in "CREATE TABLE stores (id serial PRIMARY KEY, name varchar);" in your terminal.
+6. Type in "CREATE TABLE stores_brands (id serial PRIMARY KEY, store_id int, brand_id int);" in your terminal.
+6. Make sure you are accessing psql while in your project folder.
+7. HAVE FUN!
+
+
+###Copyright (c) 2015 Geoff Winner
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
