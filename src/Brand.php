@@ -80,10 +80,12 @@
           return $found_brand;
         }
 
-        function update($new_brand_name)
+        function update($new_brand_name, $new_size)
         {
           $GLOBALS['DB']->exec("UPDATE brands SET brand_name = '{new_brand_name}' WHERE id = {$this->getId()};");
+          $GLOBALS['DB']->exec("UPDATE brands SET size = {new_size} WHERE id = {$this->getId()};");
           $this->setBrandName($new_brand_name);
+          $this->setSize($new_size);
         }
 
         function delete()

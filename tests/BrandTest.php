@@ -108,9 +108,28 @@
             $test_brand->save();
 
             $new_brand_name = 'Nikes';
+            $new_size = 6;
 
-            $test_brand->update($new_brand_name);
-            $this->assertEquals(['Nikes'], [$test_brand->getBrandName()]);
+            $test_brand->update($new_brand_name, $new_size);
+            $this->assertEquals(['Nikes', 6], [$test_brand->getBrandName(), $test_brand->getSize()]);
         }
+        //
+        // function test_delete()
+        // {
+        //     $course = 'Intro';
+        //     $coursenumber = 102;
+        //     $id = null;
+        //     $test_course = new Course($course, $coursenumber, $id);
+        //     $test_course->save();
+        //     $name = 'Otto';
+        //     $date = '2015-09-13';
+        //     $id2 = null;
+        //     $test_student = new Student($name, $date, $id2);
+        //     $test_student->save();
+        //     $test_course->addStudent($test_student);
+        //     $test_course->delete();
+        //     $this->assertEquals([], $test_student->getCourses());
+        // }
+
     }
 ?>
